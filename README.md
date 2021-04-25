@@ -12,15 +12,20 @@ Run `npm start` for a dev server. Navigate to `http://localhost:1234`. The app w
 
 Run `npm test` to execute the unit tests via [Jest](https://jestjs.io/) and [Enzyme](https://airbnb.io/enzyme/).
 
-### Run a single unit tests
+#### Run a individual unit tests
 
 npm run test src/components/Filters/Filters.spec.js
+
 npm run test src/components/Hotel/Hotel.spec.js
+
 npm run test src/components/HotelCard/HotelCard.spec.js
+
 npm run test src/components/App/App.spec.js
+
 npm run test src/services/hotel-result/hotel-result.spec.js
 
-show console.log in test:
+#### Show console.log output while testing
+
 npm run test src/components/Filters/Filters.spec.js --silent=false
 npm run test src/components/Hotel/Hotel.spec.js --silent=false
 
