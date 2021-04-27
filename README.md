@@ -52,4 +52,16 @@ on windows use the sh command to run the boot file
 
 #### Instructions:
 
-Checkout instructions.pdf
+[Checkout instructions.pdf](instructions.pdf)
+
+Give the user the ability to filter the results by hotel name and sort the list by price.
+
+- [x] Add at least 2 components in the application, right now everything lives at the root.
+- [x] Implement the ability to filter the result set by hotel name
+- [x] Implement the ability to sort the result set by price in ascending order.
+
+Handle all cases where the application might fail or produce no results to the user gracefully.
+
+- [ ] Hotel name is not found in the list
+- [x] No data is returned from the REST endpoint
+- [ ] Add additional unit tests for core functionality.
