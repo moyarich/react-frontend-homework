@@ -1,0 +1,21 @@
+.hotel {
+  display: grid;
+  grid-template-columns: 20% 75%;
+  grid-column-gap: 20px;
+  padding: 10px;
+  background: #dcdcdc;
+}
+
+.hotel-list {
+  > *:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+.error {
+  margin: 25px 0;
+  padding: 20px;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  font-size: 1.2em;
+  text-align: center;
+}
