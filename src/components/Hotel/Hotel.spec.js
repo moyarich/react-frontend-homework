@@ -159,14 +159,12 @@ describe("Hotel", () => {
 
     //render the output
     wrapper.update();
-    console.log(wrapper.find(".error").text());
+
     expect(wrapper.find(".error").exists()).toBe(true);
   });
 
   it("Should have filters", () => {
     const wrapper = render(<Hotel />);
-
-    //console.log(wrapper.find(".filters").html());
     expect(wrapper.find(".filters")).toHaveLength(1);
   });
 
@@ -185,9 +183,10 @@ describe("Hotel", () => {
     expect(axios.get).toHaveBeenCalledWith(`http://localhost:8080/rest/rates`);
     expect(axios.get).toHaveBeenCalledTimes(1);
 
-    console.log("axios.get() called with>>>", axios.get.mock.calls[0]);
-    console.log("axios.get() returns>>>", axios.get.mock.results[0]);
+    //console.log("axios.get() called with>>>", axios.get.mock.calls[0]);
+    //console.log("axios.get() returns>>>", axios.get.mock.results[0]);
     //console.log("-debugged---", wrapper.debug());
     //console.log(wrapper.render().html());
+    //console.log(wrapper.find(".error").text());
   });
 });
