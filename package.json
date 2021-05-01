@@ -29,16 +29,17 @@
     "@babel/plugin-proposal-class-properties": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
     "babel-jest": "^24.5.0",
-    "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.11.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
     "jest": "^24.5.0",
     "parcel-bundler": "^1.12.4",
     "sass": "^1.28.0"
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-test-renderer": "^16.14.0"
   },
   "resolutions": {
     "node-forge": "0.10.0"
