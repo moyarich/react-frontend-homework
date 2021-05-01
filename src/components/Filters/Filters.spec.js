@@ -35,7 +35,7 @@ describe("Filters", () => {
 
   it("renders with expected props supplied for searchName", () => {
     const wrapper = mount(<Filters {...props} />);
-    expect(wrapper.find("search-input").text()).toEqual(
+    expect(wrapper.find(".search-input").text()).toEqual(
       wrapper.props().searchName
     );
   });
