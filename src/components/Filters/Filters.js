@@ -8,7 +8,7 @@ const Filters = (props) => {
         <span className="filter-title">Hotel name</span>
         <input
           type="text"
-          className="input"
+          className="search-input input"
           name="filterSearchName filter-field"
           value={props.searchName}
           onChange={(event) => props.handleFilterSearchNameChange(event)}
@@ -20,7 +20,7 @@ const Filters = (props) => {
         <select
           className="filter-field"
           name="filterSortBy"
-          className="select"
+          className="sort-select select"
           value={props.sortBy}
           onChange={(event) => props.handleFilterSortByChange(event)}
         >
