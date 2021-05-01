@@ -1,8 +1,7 @@
 const filterHotelData = (hotels, searchName, sortBy) => {
-  const filteredHotels = hotels.slice(0);
-
+  let filteredHotels = hotels.slice();
   if (searchName) {
-    filteredHotels.filter((hotel) => {
+    filteredHotels = filteredHotels.filter((hotel) => {
       return hotel.hotelStaticContent.name
         .toLowerCase()
         .includes(searchName.toLowerCase());
@@ -26,7 +25,6 @@ const filterHotelData = (hotels, searchName, sortBy) => {
   }
 
   filteredHotels.sort(sortFn);
-
   return filteredHotels;
 };
 
