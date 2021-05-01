@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 import HotelCard from "./HotelCard.js";
 
 describe("HotelCard", () => {
@@ -120,12 +120,15 @@ describe("HotelCard", () => {
     },
   };
 
-  const setup = (props = {}) => {
-    return shallow(<HotelCard {...props} />);
-  };
-
   it("renders the HotelCard component", () => {
-    const wrapper = setup(props);
+    const wrapper = shallow(<HotelCard {...props} />);
     expect(wrapper.find(".hotel-card").exists()).toBe(true);
+  });
+
+  it("renders with expected props supplied for .hotel-name field", () => {
+    const wrapper = mount(<HotelCard {...props} />);
+    expect(wrapper.find(".hotel-name").text()).toEqual(
+      wrapper.props().hotel.hotelStaticContent.name
+    );
   });
 });
