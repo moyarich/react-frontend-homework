@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Hotel.style.scss";
 
 import hotelResultService from "../../services/hotel-result/hotel-result.service";
@@ -16,20 +16,48 @@ const Hotel = () => {
   const [searchName, setSearchName] = useState(filterDefaults.searchName);
   const [sortBy, setSortBy] = useState(filterDefaults.sortBy);
   const [error, setError] = useState(null);
+  const isLoading = useRef(true);
 
   useEffect(() => {
-    hotelResultService.get().then((response) => {
-      if (response) {
-        setHotels(response.results.hotels);
-        return;
-      }
-      setError("Sorry, there was an error retrieving hotel data");
-    });
+    hotelResultService
+      .get()
+      .then((response) => {
+        if (response && response.success) {
+          const htels = filterHotelData(
+            response.results.hotels,
+            searchName,
+            sortBy
+          );
+          setFilteredHotels(htels);
+          setHotels(htels);
+          setError(null);
+        } else {
+          setError(
+            "Sorry, there was an error retrieving hotel data, please refresh the page"
+          );
+        }
+      })
+      .catch((error) => {
+        setError(
+          "Sorry, server error. Could not retrieve data. please try again"
+        );
+      });
   }, []);
 
   useEffect(() => {
-    setFilteredHotels(filterHotelData(hotels, searchName, sortBy));
-  }, [hotels, searchName, sortBy]);
+    if (isLoading.current) {
+      isLoading.current = false;
+      setError("...loading");
+    } else {
+      setError(null);
+      const htels = filterHotelData(hotels, searchName, sortBy);
+      setFilteredHotels(htels);
+
+      if (htels.length === 0) {
+        setError("Sorry, no hotels found");
+      }
+    }
+  }, [searchName, sortBy]);
 
   const handleFilterSearchNameChange = (event) => {
     setSearchName(event.target.value);
@@ -43,9 +71,12 @@ const Hotel = () => {
     setSortBy(filterDefaults.sortBy);
   };
 
+  const notification = (error) =>
+    error ? <div className="error">{error}</div> : "";
+
   return (
     <div>
-      <div className="error">{error}</div>
+      {notification(error)}
       <div className="hotel">
         <div>
           <Filters
